@@ -27,39 +27,44 @@ public class PlayerStats : MonoBehaviour {
 
     }
 
+
+
+
     public int GSStrength
-    {          
+    {
         get { return _Strength; }
         set { _Strength = value; }
-    }          
-               
+    }
+
     public int GSConstitution
     {
         get { return _Constitution; }
         set { _Constitution = value; }
     }
-   
+
     public int GSDexterity
     {
         get { return _Dexterity; }
         set { _Dexterity = value; }
     }
-    
+
     public int GSAgilety
     {
         get { return _Agilety; }
         set { _Agilety = value; }
     }
-    
+
     public int GSIntelligence
     {
         get { return _Intelligence; }
         set { _Intelligence = value; }
     }
-    
+
     public int GSWisdom
     {
         get { return _Wisdom; }
         set { _Wisdom = value; }
     }
+
+
 }
