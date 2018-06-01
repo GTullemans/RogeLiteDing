@@ -35,7 +35,7 @@ public class Card : MonoBehaviour {
         text.GetComponent<TextMesh>().text = crdbuild._cardtext;
         manacost.GetComponent<TextMesh>().text = "" + crdbuild._cardcost;
         */
-        text.text = spul(crdbuild._cardtext);
+        // text.text = spul(crdbuild._cardtext);
 	}
 	
 	// Update is called once per frame

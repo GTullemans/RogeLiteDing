@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerSlots : MonoBehaviour {
 
-	
+    [SerializeField] private GameObject[] _Slots;
 }
