@@ -12,10 +12,13 @@ public class EnemyType : ScriptableObject
         get { return _BaseHealth; }
     }
 
-    private List<GameObject> _Deck;
-    public List<GameObject> Deck
-    {
-        get { return _Deck; }
-    }
+    //private List<GameObject> _Deck;
+    //public List<GameObject> Deck
+    //{
+    //    get { return _Deck; }
+    //}
+
+
+    
 
 }
