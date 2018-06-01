@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Cardbuild")]
+[CreateAssetMenu(menuName = "Card build")]
 public class Cardbuilder : ScriptableObject {
 
     [SerializeField]
@@ -16,6 +16,7 @@ public class Cardbuilder : ScriptableObject {
     [SerializeField]
     private int cardcost; public int _cardcost { get { return (cardcost); } set { cardcost = value; } }
     [SerializeField]
+    [TextArea(15, 20)]
     private string cardtext; public string _cardtext { get { return (cardtext); } set { cardtext = value; } }
     [SerializeField]
     private float[] cardscaling; public float[] _cardscaling { get { return (cardscaling); } set { cardscaling = value; } } 

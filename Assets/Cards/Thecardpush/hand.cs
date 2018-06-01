@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class hand : MonoBehaviour {
     [SerializeField]
@@ -13,7 +14,14 @@ public class hand : MonoBehaviour {
     private List<GameObject> gravecrds; public List<GameObject> grvcrd { get { return (gravecrds); } set { gravecrds = value; } }
     [SerializeField]
     private List<GameObject> stckcrds; public List<GameObject> stkcrd { get { return (stckcrds); } set { stckcrds = value; } }
-   
+    [SerializeField]
+    private Text _disphand;
+    [SerializeField]
+    private Text _dispdeck;
+    [SerializeField]
+    private Text _dispgrave;
+    [SerializeField]
+    private Text _dispexil;
     // Use this for initialization
     void Start () {
         
@@ -21,22 +29,18 @@ public class hand : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-	}
-
-    private void drw(List<GameObject> van,List<GameObject> naar, int aantal)
-    {
-        int boi = 0;
-        for (int i = 0; i < aantal; i++)
+        _dispdeck.text = "" + deckcrds.Count;
+        _dispgrave.text = "" + gravecrds.Count;
+        _dispexil.text = "" + exilcrds.Count;
+        _disphand.text = "" + handcrds.Count;
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            if (van.Count != 0)
-            {
-                boi = Random.Range(0, van.Count);
-                naar.Add(van[boi]);
-                van.RemoveAt(boi);
-            }
+            GameObject blop = new GameObject(); Instantiate(blop);
+            deckcrds.Add(blop);
         }
     }
+
+   
 
    
 }
