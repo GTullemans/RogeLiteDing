@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class Card : MonoBehaviour {
 
@@ -24,7 +25,8 @@ public class Card : MonoBehaviour {
     [SerializeField]
     private Canvas secondlayer;
     [SerializeField]
-    private int layerorder; public int lay { get { return (layerorder); } set { layerorder = value; secondlayer.sortingOrder = layerorder + 1; } }
+    private int layerorder; public int lay { get { return (layerorder); }
+        set { layerorder = value; secondlayer.sortingOrder = layerorder + 1; gameObject.GetComponent<SortingGroup>().sortingOrder = layerorder; } }
 
     private float[] pwrscale;
     private GameObject owner; public GameObject _owner { get { return (owner); } set { owner = value; } }
@@ -32,7 +34,8 @@ public class Card : MonoBehaviour {
     private string temporarytextsave;
     // Use this for initialization
     void Start () {
-        
+        gameObject.GetComponent<SortingGroup>().sortingOrder = layerorder;
+        secondlayer.sortingOrder = layerorder + 1;
         afbeelding.GetComponent<SpriteRenderer>().sprite = crdbuild._cardsprite;
         
         title.text = crdbuild._cardname;
