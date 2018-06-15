@@ -37,8 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4414538733269568}
   - component: {fileID: 212985390946127160}
-  - component: {fileID: 114031887015486882}
   - component: {fileID: 210048361894262812}
+  - component: {fileID: 114851236253799476}
   m_Layer: 0
   m_Name: crdbackground 1
   m_TagString: Untagged
@@ -150,8 +150,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018647022086622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 35}
-  m_LocalScale: {x: 15, y: 20, z: 0}
+  m_LocalPosition: {x: -0.17, y: 2.8634276, z: 0}
+  m_LocalScale: {x: 3, y: 4, z: 0}
   m_Children:
   - {fileID: 4303063460480792}
   - {fileID: 4959074185339270}
@@ -207,27 +207,6 @@ MonoBehaviour:
   m_Text: '90
 
 '
---- !u!114 &114031887015486882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1018647022086622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37531aac84569d84ba9b80af26d35e09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crdbuild: {fileID: 11400000, guid: fa8f8200e0d0aef469889d52823f061d, type: 2}
-  afbeelding: {fileID: 1916045856652540}
-  afbeeldingvoortext: {fileID: 1097852646250224}
-  text: {fileID: 114684857464848184}
-  title: {fileID: 114174070655558780}
-  manacost: {fileID: 114002395373521996}
-  allkeywords: []
-  terminology: []
-  secondlayer: {fileID: 0}
-  layerorder: 0
 --- !u!114 &114174070655558780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,6 +314,27 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114851236253799476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018647022086622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8edc8221ed6ad41ac42b4c64516826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crdbuild: {fileID: 11400000, guid: 4de4cdfc223ba7d4693111df19ef90f2, type: 2}
+  afbeelding: {fileID: 1916045856652540}
+  afbeeldingvoortext: {fileID: 1097852646250224}
+  text: {fileID: 114684857464848184}
+  title: {fileID: 114174070655558780}
+  manacost: {fileID: 114002395373521996}
+  allkeywords: []
+  terminology: []
+  secondlayer: {fileID: 223623182313754296}
+  layerorder: 0
 --- !u!210 &210048361894262812
 SortingGroup:
   m_ObjectHideFlags: 1
@@ -342,8 +342,8 @@ SortingGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018647022086622}
   m_Enabled: 1
-  m_SortingLayerID: 1656313389
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: -1
 --- !u!212 &212571840387967756
 SpriteRenderer:
@@ -377,7 +377,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1656313389
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f43288d902020b4990bfddcc5f7d1a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -421,7 +421,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1656313389
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: ea45531b6136f97488d2e0108d57eac6, type: 3}
   m_Color: {r: 0.16147636, g: 0.5452201, b: 0.627451, a: 1}
@@ -465,7 +465,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1656313389
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f43288d902020b4990bfddcc5f7d1a2, type: 3}
   m_Color: {r: 1, g: 0.34666958, b: 0.16176474, a: 1}
@@ -512,7 +512,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 1656313389
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224161005538221592

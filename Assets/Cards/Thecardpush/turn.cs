@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class hand : MonoBehaviour {
+public class turn : MonoBehaviour {
     [SerializeField]
     private List<GameObject> handcrds; public List<GameObject> hndcrd { get { return (handcrds); } set { handcrds = value; } }
     [SerializeField]
@@ -47,12 +47,57 @@ public class hand : MonoBehaviour {
 
 
 
-//public interface turn
-//{
-//    void startturn();
-//    void endturn();
-//    void duringturn();
-//    void stackeffect();
-//}
+public interface turnupdate
+{
+   void startturn();
+   void endturn();
+   void duringturn();
+   void stackeffect();
+}
 
-//public class playerturn : turn
+public class playerturn : turnupdate
+{
+    public playerturn()
+    {
+
+    }
+    public void startturn()
+    {
+
+    }
+    public void endturn()
+    {
+
+    }
+    public void duringturn()
+    {
+
+    }
+    public void stackeffect()
+    {
+
+    }
+}
+public class enemyturn : turnupdate
+{
+    public enemyturn()
+    {
+
+    }
+    public void startturn()
+    {
+
+    }
+    public void endturn()
+    {
+
+    }
+    public void duringturn()
+    {
+
+    }
+    public void stackeffect()
+    {
+
+    }
+}
