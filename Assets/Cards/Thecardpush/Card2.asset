@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db991f36ef00aca4cadb0069bbf34ada, type: 3}
+  m_Name: Card2
+  m_EditorClassIdentifier: 
+  cardname: test2
+  cardsprite: {fileID: 21300016, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  cardclass: 0
+  cardtype: 0
+  cardcost: 1
+  cardtext: 'dit <1> (keyword) en zo en dan (ander keyword)
+
+    maar toen <2>'
+  cardscaling:
+  - -5
+  - 2

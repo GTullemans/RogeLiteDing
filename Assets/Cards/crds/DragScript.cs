@@ -6,10 +6,21 @@ public class DragScript : MonoBehaviour {
     private Vector3 _MousePos;
     private bool _Kliked;
     private Collider _CardCollider;
+    private Card _CardInfo;
+    private int InitialLayer;
+    private Vector2 InitialPos;
+    private Collider Hitcoll;
+
+    [SerializeField]
+    private LayerMask _Mask;
+
+    private movecard _MoveCard;
     // Use this for initialization
     void Start () {
         _Kliked = false;
         _CardCollider = gameObject.GetComponent<Collider>();
+        _CardInfo = gameObject.GetComponent<Card>();
+        
 	}
 	
 	// Update is called once per frame
@@ -33,6 +44,7 @@ public class DragScript : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -40,22 +52,55 @@ public class DragScript : MonoBehaviour {
 
                 if (hit.collider == _CardCollider)
                 {
-
-
-
+                    Hitcoll = hit.collider;
+                    InitialPos = gameObject.transform.position;
+                    InitialLayer = _CardInfo.lay;
+                    _CardInfo.lay = 1000;
                     _Kliked = true;
 
                 }
             }
         }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            _Kliked = false;
-        }
+        
 
         if (_Kliked)
         {
-            transform.position = Vector3.Lerp(transform.position, _MousePos, 0.98f);
+            transform.position = Vector3.Lerp(transform.position, mousepos, 0.98f);
+
+
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _Mask = ~_Mask;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 1000f, _Mask))
+                {
+                    Debug.Log(hit.collider.tag);
+                    if (hit.collider.tag == "Play")
+                    {
+
+                    }
+
+                    if (hit.collider.tag == "Hand")
+                    {
+                        
+                        if (Hitcoll == _CardCollider)
+                        {
+                           
+                            _CardInfo.lay = InitialLayer;
+                            transform.position = InitialPos;
+                        }
+                    }
+
+
+                }
+
+
+
+
+                _Kliked = false;
+            }
         }
     }
 
