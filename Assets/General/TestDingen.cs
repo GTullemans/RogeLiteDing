@@ -24,10 +24,10 @@ public class TestDingen : MonoBehaviour {
   
     // Use this for initialization
     void Start () {
-        _Deck = new List<GameObject>(ZoneManager.GetComponent<hand>().dckcrd);
-        _Hand = new List<GameObject>(ZoneManager.GetComponent<hand>().hndcrd);
-        _Graf = new List<GameObject>(ZoneManager.GetComponent<hand>().grvcrd);
-        _Exile = new List<GameObject>(ZoneManager.GetComponent<hand>().xlcrd);
+        _Deck = new List<GameObject>(ZoneManager.GetComponent<turn>().dckcrd);
+        _Hand = new List<GameObject>(ZoneManager.GetComponent<turn>().hndcrd);
+        _Graf = new List<GameObject>(ZoneManager.GetComponent<turn>().grvcrd);
+        _Exile = new List<GameObject>(ZoneManager.GetComponent<turn>().xlcrd);
 
         
     }
