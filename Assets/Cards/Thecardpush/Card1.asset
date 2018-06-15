@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db991f36ef00aca4cadb0069bbf34ada, type: 3}
-  m_Name: New Cardbuilder
+  m_Name: Card1
   m_EditorClassIdentifier: 
   cardname: test
-  cardsprite: {fileID: 21300018, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+  cardsprite: {fileID: 21300018, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
   cardclass: 0
   cardtype: 0
-  cardcost: 9
+  cardcost: 0
   cardtext: 'dit <0> (keyword) en zo en dan (ander keyword)
 
     maar toen <1>'
