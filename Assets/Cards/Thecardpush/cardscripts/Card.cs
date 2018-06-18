@@ -27,7 +27,7 @@ public class Card : MonoBehaviour {
     [SerializeField]
     private int layerorder; public int lay { get { return (layerorder); }
         set { layerorder = value; secondlayer.sortingOrder = layerorder + 1; gameObject.GetComponent<SortingGroup>().sortingOrder = layerorder; } }
-
+    private int enrg; public int _energyRequirement { get { return (enrg); } set { enrg = value; } }
     private float[] pwrscale;
     private GameObject owner; public GameObject _owner { get { return (owner); } set { owner = value; } }
 
@@ -43,13 +43,15 @@ public class Card : MonoBehaviour {
         pwrscale = crdbuild._cardscaling;
         temporarytextsave = kwrdnote(crdbuild._cardtext);
         text.text = scaleupdate(temporarytextsave);
-
+        enrg = crdbuild._cardcost;
     }
 	
 	// Update is called once per frame
 	void Update () {
 	    
 	}
+
+
 
 
     private string kwrdnote(string dinges)

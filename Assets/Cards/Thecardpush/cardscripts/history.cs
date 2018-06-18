@@ -8,8 +8,15 @@ public class history : MonoBehaviour {
     private movecard mvcrd;
     private addcard adcrd;
     private changehp cnghp;
+    private changemaxhp cngmxhp;
+    private sethp sthp;
+    private setmaxhp stmxhp;
     private changemana cngmn;
+    private changemaxmana cngmxmn;
+    private setmana stmn;
+    private setmaxmana stmxmn;
     private int currentTick =0;
+    private List<effect> triggeredeffects = new List<effect>(); public List<effect> _effects { get { return (triggeredeffects); } set { triggeredeffects = value; } }
 
 	void Start ()
     {
@@ -18,14 +25,7 @@ public class history : MonoBehaviour {
 
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-
-        }
+        
     }
 
     public void moveAcard(List<GameObject> from, int frmindex, List<GameObject> to, int toindex)
@@ -61,6 +61,39 @@ public class history : MonoBehaviour {
         currentTick++;
         klock.Add(cnghp);
     }
+    public void changeAmaxhealth(GameObject target, int amount)
+    {
+        cngmxhp = new changemaxhp(target, amount);
+        cngmxhp.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(cngmxhp);
+    }
+    public void setAhealth(GameObject target, int amount)
+    {
+        sthp = new sethp(target, amount);
+        sthp.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(sthp);
+    }
+    public void setAmaxhealth(GameObject target, int amount)
+    {
+        stmxhp = new setmaxhp(target, amount);
+        stmxhp.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(stmxhp);
+    }
     public void changeAmana(GameObject target, int amount)
     {
         cngmn = new changemana(target, amount);
@@ -72,10 +105,43 @@ public class history : MonoBehaviour {
         currentTick++;
         klock.Add(cngmn);
     }
+    public void changeAmaxmana(GameObject target, int amount)
+    {
+        cngmxmn = new changemaxmana(target, amount);
+        cngmxmn.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(cngmxmn);
+    }
+    public void setAmana(GameObject target, int amount)
+    {
+        stmn = new setmana(target, amount);
+        stmn.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(stmn);
+    }
+    public void setAmaxmana(GameObject target, int amount)
+    {
+        stmxmn = new setmaxmana(target, amount);
+        stmxmn.Execute();
+        if (klock.Count > currentTick)
+        {
+            klock.RemoveRange(currentTick, klock.Count - currentTick);
+        }
+        currentTick++;
+        klock.Add(stmxmn);
+    }
 
     public void windback()
     {
-        if(klock.Count > 0 && klock.Count >= currentTick && currentTick > 0)
+        if(klock.Count > 0 && klock.Count >= currentTick && currentTick >0)
         {
             klock[currentTick - 1].Undo();
             currentTick--;
@@ -91,9 +157,9 @@ public class history : MonoBehaviour {
     }
 
 
-    public void instantiateHack(GameObject target)
+    public GameObject instantiateHack(GameObject target)
     {
-        Instantiate(target);
+       return(Instantiate(target));
     }
     public void destroyHack(GameObject target)
     {
@@ -140,6 +206,7 @@ public class addcard : ticks
     private int _toindex;
     private GameObject movedObj;
     private history _boss;
+    private GameObject movedobjholder;
 
     public addcard(GameObject card, List<GameObject> to, int toindex, history boss)
     {
@@ -149,14 +216,14 @@ public class addcard : ticks
 
     public void Execute()
     {
-        _boss.instantiateHack(movedObj);
-        _to.Insert(_toindex, movedObj);
+        movedobjholder = _boss.instantiateHack(movedObj);
+        _to.Insert(_toindex, movedobjholder);
     }
 
     public void Undo()
     {
-        _to.Remove(movedObj);
-        _boss.destroyHack(movedObj);
+        _to.Remove(movedobjholder);
+        _boss.destroyHack(movedobjholder);
     }
 
 }
@@ -178,6 +245,64 @@ public class changehp : ticks
         changetarget.GetComponent<Health>()._Health -= change;
     }
 }
+public class changemaxhp : ticks
+{
+    private GameObject changetarget;
+    private int change;
+    public changemaxhp(GameObject cngtrget, int cng)
+    {
+        changetarget = cngtrget;
+        change = cng;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Health>()._maxHealth += change;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Health>()._maxHealth -= change;
+    }
+}
+public class sethp : ticks
+{
+    private GameObject changetarget;
+    private int change;
+    private int placeholderhp;
+    public sethp(GameObject cngtrget, int cng)
+    {
+        changetarget = cngtrget;
+        change = cng;
+        placeholderhp = changetarget.GetComponent<Health>()._Health;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Health>()._Health = change;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Health>()._Health = placeholderhp;
+    }
+}
+public class setmaxhp : ticks
+{
+    private GameObject changetarget;
+    private int change;
+    private int placeholderhp;
+    public setmaxhp(GameObject cngtrget, int cng)
+    {
+        changetarget = cngtrget;
+        change = cng;
+        placeholderhp = changetarget.GetComponent<Health>()._maxHealth;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Health>()._maxHealth = change;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Health>()._maxHealth = placeholderhp;
+    }
+}
 public class changemana : ticks
 {
     private GameObject changetarget;
@@ -194,6 +319,64 @@ public class changemana : ticks
     public void Undo()
     {
         changetarget.GetComponent<Mana>()._Mana -= changeamount;
+    }
+}
+public class changemaxmana : ticks
+{
+    private GameObject changetarget;
+    private int changeamount;
+    public changemaxmana(GameObject trgt, int amnt)
+    {
+        changetarget = trgt;
+        changeamount = amnt;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Mana>()._maxMana += changeamount;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Mana>()._maxMana -= changeamount;
+    }
+}
+public class setmana : ticks
+{
+    private GameObject changetarget;
+    private int changeamount;
+    private int placeholdermana;
+    public setmana(GameObject trgt, int amnt)
+    {
+        changetarget = trgt;
+        changeamount = amnt;
+        placeholdermana = changetarget.GetComponent<Mana>()._Mana;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Mana>()._Mana = changeamount;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Mana>()._Mana = placeholdermana;
+    }
+}
+public class setmaxmana : ticks
+{
+    private GameObject changetarget;
+    private int changeamount;
+    private int placeholdermana;
+    public setmaxmana(GameObject trgt, int amnt)
+    {
+        changetarget = trgt;
+        changeamount = amnt;
+        placeholdermana = changetarget.GetComponent<Mana>()._maxMana;
+    }
+    public void Execute()
+    {
+        changetarget.GetComponent<Mana>()._maxMana = changeamount;
+    }
+    public void Undo()
+    {
+        changetarget.GetComponent<Mana>()._maxMana = placeholdermana;
     }
 }
 /*

@@ -19,5 +19,7 @@ public class Cardbuilder : ScriptableObject {
     [TextArea(15, 20)]
     private string cardtext; public string _cardtext { get { return (cardtext); } set { cardtext = value; } }
     [SerializeField]
-    private float[] cardscaling; public float[] _cardscaling { get { return (cardscaling); } set { cardscaling = value; } } 
+    private float[] cardscaling; public float[] _cardscaling { get { return (cardscaling); } set { cardscaling = value; } }
+    [SerializeField]
+    private effectbuilder[] cardeffects; public effectbuilder[] _cardeffects { get { return (cardeffects); } set { cardeffects = value; } }
 }

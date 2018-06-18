@@ -5,16 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "effect build")]
 public class effectbuilder : ScriptableObject {
 
+   
     [SerializeField]
     private bool pressistant; public bool _pressistant { get { return (pressistant); } set { pressistant = value; } }
     [SerializeField]
     private bool hastriggeredeffect; public bool _hastriggeredeffect { get { return (hastriggeredeffect); } set { hastriggeredeffect = value; } }   
     [SerializeField]
     private string triggertype; public string _triggertype { get { return (triggertype); } set { triggertype = value; } }
-    /*
     [SerializeField]
-    private bool targeted; public bool _istargeted { get { return (targeted); } set { targeted = value; } }
+    private bool hasResolveEffect; 
     [SerializeField]
-    private int multicast; public int _multicast { get { return (multicast); } set { multicast = value; } }
-    */
+    private string typeResolveEffect;
+    
+        
+
+
+
+    
 }

@@ -22,9 +22,12 @@ public class turn : MonoBehaviour {
     private Text _dispgrave;
     [SerializeField]
     private Text _dispexil;
+    private history _history;
+    [SerializeField]
+    private GameObject creddo;
     // Use this for initialization
     void Start () {
-        
+        _history = new history();
 	}
 	
 	// Update is called once per frame
@@ -35,8 +38,19 @@ public class turn : MonoBehaviour {
         _disphand.text = "" + handcrds.Count;
         if (Input.GetKeyDown(KeyCode.A))
         {
-            GameObject blop = new GameObject(); Instantiate(blop);
-            deckcrds.Add(blop);
+            _history.addAcard(creddo,deckcrds,0);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            _history.moveAcard(deckcrds, 0, hndcrd, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            _history.windback();
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            _history.windforward();
         }
     }
 

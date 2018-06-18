@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\crds"
+    "\\crds",
+    "\\Thecardpush",
+    "\\Thecardpush\\cardscripts"
   ],
-  "SelectedNode": "\\crds\\playerscript.cs",
+  "SelectedNode": "\\Thecardpush\\cardscripts\\history.cs",
   "PreviewInSolutionExplorer": false
 }
