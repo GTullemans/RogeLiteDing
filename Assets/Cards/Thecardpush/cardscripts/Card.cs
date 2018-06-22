@@ -30,9 +30,9 @@ public class Card : MonoBehaviour {
     private int enrg; public int _energyRequirement { get { return (enrg); } set { enrg = value; } }
     private float[] pwrscale;
     private GameObject owner; public GameObject _owner { get { return (owner); } set { owner = value; } }
+    private effectbuilder[] cardeffects; public effectbuilder[] _cardeffects { get { return (cardeffects); } set { cardeffects = value; } }
 
     private string temporarytextsave;
-    // Use this for initialization
     void Start () {
         gameObject.GetComponent<SortingGroup>().sortingOrder = layerorder;
         secondlayer.sortingOrder = layerorder + 1;
@@ -45,14 +45,6 @@ public class Card : MonoBehaviour {
         text.text = scaleupdate(temporarytextsave);
         enrg = crdbuild._cardcost;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
-
-
-
 
     private string kwrdnote(string dinges)
     {

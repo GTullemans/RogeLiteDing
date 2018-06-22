@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class history : MonoBehaviour {
+public class history {
 
     private List<ticks> klock = new List<ticks>();
     private movecard mvcrd;
@@ -15,17 +15,11 @@ public class history : MonoBehaviour {
     private changemaxmana cngmxmn;
     private setmana stmn;
     private setmaxmana stmxmn;
-    private int currentTick =0;
-    private List<effect> triggeredeffects = new List<effect>(); public List<effect> _effects { get { return (triggeredeffects); } set { triggeredeffects = value; } }
-
-	void Start ()
+    private int currentTick = 0;
+    private turn baas; public turn debaas { get { return (baas); } set { baas = value; } }
+    public history(turn _baas)
     {
-		
-	}
-
-	void Update ()
-    {
-        
+        baas = _baas;
     }
 
     public void moveAcard(List<GameObject> from, int frmindex, List<GameObject> to, int toindex)
@@ -157,14 +151,7 @@ public class history : MonoBehaviour {
     }
 
 
-    public GameObject instantiateHack(GameObject target)
-    {
-       return(Instantiate(target));
-    }
-    public void destroyHack(GameObject target)
-    {
-        Destroy(target);
-    }
+    
 }
 
 
@@ -216,14 +203,14 @@ public class addcard : ticks
 
     public void Execute()
     {
-        movedobjholder = _boss.instantiateHack(movedObj);
+        movedobjholder = _boss.debaas.instantiateHack(movedObj);
         _to.Insert(_toindex, movedobjholder);
     }
 
     public void Undo()
     {
         _to.Remove(movedobjholder);
-        _boss.destroyHack(movedobjholder);
+        _boss.debaas.destroyHack(movedobjholder);
     }
 
 }
@@ -379,37 +366,4 @@ public class setmaxmana : ticks
         changetarget.GetComponent<Mana>()._maxMana = placeholdermana;
     }
 }
-/*
-public class playcard : ticks
-{
-    private GameObject card;
-    public playcard(GameObject crd)
-    {
-        card = crd;
-    }
-    public void Execute()
-    {
 
-    }
-    public void Undo()
-    {
-
-    }
-}
-
-public class triggerdeffect : ticks
-{
-    public triggerdeffect()
-    {
-
-    }
-    public void Execute()
-    {
-
-    }
-    public void Undo()
-    {
-
-    }
-}
-*/
